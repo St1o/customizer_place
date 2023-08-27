@@ -1,0 +1,113 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load bootstrap5 %}
+
+<table style="width: 100%">
+
+    <tbody>
+    <tr>
+        <td>
+            <figure style="width: 256px">
+                <a href="/"><img src="{%static 'shoes/images/logo3.png'%}" width="148px" height="148px"
+                                 style="padding-left: 48px; margin-top: -25px"></a>
+                <figcaption style="text-align: center; margin-top: -15px">
+                    <b><i>VIKAMAX MARKET</i></b>
+                </figcaption>
+            </figure>
+        </td>
+        <td>
+        </td>
+        <td>
+            <table style="margin-top: -25px">
+                <tbody>
+                <tr>
+                    <td align="right">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        ИНН : xxx-xxx-xxx
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        Г. Ростов-на-Дону
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        тел.: +7-909-430-7359
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        e-mail: jjmaxime@mail.ru
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <td style="text-align: center;padding-left: 548px; margin-top: 0px">
+        <table class="table" style="text-align: center">
+            <thead>
+            <b>
+                <h2>ВАШ ЗАКАЗ - <b><i>{{client}}</i></b></h2>
+            </b>
+            <br>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Articles</th>
+                <th scope="col"></th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for qs in qs %}
+            <tr>
+                <th scope="row">{{i}}</th>
+                <td>{{qs.articles_name}}</td>
+                <td>{{qs.articles_photo}}</td>
+                <td>{{qs.articles_price}}</td>
+                <td></td>
+
+                <td>
+                    <a href="{% url 'del' qs.id %}" class=" btn-danger">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+            {% endfor %}
+            <tr>
+                <th scope="row"></th>
+                <td colspan="1"><b><i>Total</i></b></td>
+                <td></td>
+                <td>{{total}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </td>
+    <td>
+        <tr>
+
+        </tr>
+    </td>
+    <td style="padding-left: 648px;">
+        <tr>
+            <td style="text-align: center">
+                <b>Заказ Создан</b> <br>
+                {{date}} <br>
+            </td>
+            <td>
+                <a href="{% url 'paiement' %}" class="btn btn-primary">
+                    Buy
+                </a>
+            </td>
+        </tr>
+    </td>
+    </tbody>
+</table>
+<br>

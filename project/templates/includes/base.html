@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+<html lang="en">
+	<!--Head-->
+    {% include 'includes/header.html' %}
+	<!--Head-->
+
+   <!-- body -->
+   <body class="main-layout">
+	<!-- header section start -->
+	<div class="header_section">
+<!--Navbar-->
+		{% if request.user.is_authenticated %}
+    		{% include 'includes/navbar_auth.html' %}
+		{% else %}
+			{% include 'includes/navbar.html' %}
+		{% endif %}
+<!--Navbar-->
+		<div class="banner_section">
+			<div class="container-fluid">
+				<section class="slide-wrapper">
+    <div class="container-fluid">
+	    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+    {% include 'includes/newshoes.html' %}
+			<!-- Wrapper for slides -->
+        </div>
+    </div>
+</section>
+			</div>
+		</div>
+	</div>
+	<!-- header section end -->
+	<!-- new collection section start -->
+    <div class="layout_padding collection_section">
+    	<div class="container">
+    	    <h1 class="new_text"><strong>New  Collection</strong></h1>
+    	    <p class="consectetur_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+    	    <div class="collection_section_2">
+    	    	<div class="row">
+    	    		<div class="col-md-6">
+    	    			<div class="about-img">
+    	    				<button class="new_bt">
+								<a class="nav-item nav-link" href="{% url 'collection' %}">
+									NEW
+								</a>
+							</button>
+    	    				<div class="shoes-img"><img src="{% static 'shoes/images/shoes-img1.png' %}"></div>
+    	    				<p class="sport_text">Men Sports</p>
+    	    				<div class="dolar_text">$<strong style="color: #f12a47;">90</strong> </div>
+    	    				<div class="star_icon">
+    	    					<ul>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    					</ul>
+    	    				</div>
+    	    			</div>
+    	    			<button class="seemore_bt">
+							<a class="nav-item nav-link" href="{% url 'shoes' %}">
+							See More
+							</a>
+						</button>
+    	    		</div>
+    	    		<div class="col-md-6">
+    	    			<div class="about-img2">
+    	    				<div class="shoes-img2"><img src="{% static 'shoes/images/shoes-img2.png' %}"></div>
+    	    				<p class="sport_text">Men Sports</p>
+    	    				<div class="dolar_text">$<strong style="color: #f12a47;">90</strong> </div>
+    	    				<div class="star_icon">
+    	    					<ul>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    						<li><a href="#"><img src="{% static 'shoes/images/star-icon.png' %}"></a></li>
+    	    					</ul>
+    	    				</div>
+    	    			</div>
+    	    		</div>
+    	    	</div>
+    	    </div>
+    	</div>
+    </div>
+
+   	<!-- contact section end -->
+	    {% include 'includes/footer.html' %}
+	<!-- section footer start -->
+
+
+      <!-- Javascript files-->
+      <script src="{%static 'shoes/js/jquery.min.js'%}"></script>
+      <script src="{%static 'shoes/js/popper.min.js'%}"></script>
+      <script src="{%static 'shoes/js/bootstrap.bundle.min.js'%}"></script>
+      <script src="{%static 'shoes/js/jquery-3.0.0.min.js'%}"></script>
+      <script src="{%static 'shoes/js/plugin.js'%}"></script>
+      <!-- sidebar -->
+      <script src="{%static 'shoes/js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+      <script src="{%static 'shoes/js/custom.js'%}"></script>
+      <!-- javascript -->
+      <script src="{%static 'shoes/js/owl.carousel.js'%}"></script>
+      <script src="{%static 'https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js'%}"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+
+
+$('#myCarousel').carousel({
+            interval: false
+        });
+
+        //scroll slides on swipe for touch enabled devices
+
+        $("#myCarousel").on("touchstart", function(event){
+
+            var yClick = event.originalEvent.touches[0].pageY;
+            $(this).one("touchmove", function(event){
+
+                var yMove = event.originalEvent.touches[0].pageY;
+                if( Math.floor(yClick - yMove) > 1 ){
+                    $(".carousel").carousel('next');
+                }
+                else if( Math.floor(yClick - yMove) < -1 ){
+                    $(".carousel").carousel('prev');
+                }
+            });
+            $(".carousel").on("touchend", function(){
+                $(this).off("touchmove");
+            });
+        });
+      </script>
+   </body>
+</html>

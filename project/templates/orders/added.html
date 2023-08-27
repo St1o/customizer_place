@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load bootstrap5 %}
+
+<html lang="en">
+
+<body>
+<div id="message">
+   <h2>Added!</h2>
+</div>
+
+<script>
+
+       setTimeout(function(){
+            window.location.href = 'shoes/shoes.html';
+         }, 3000);
+
+         setTimeout( function(){
+    var oMsg = document.getElementById('message');
+    oMsg.style.display = 'none';
+  }, 2000);
+</script>
+</body>
+</html>

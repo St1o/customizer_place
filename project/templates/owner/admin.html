@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <style>
+        .image-thumbail {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .list-group-item a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body class="m-5">
+<a href="{% url 'all_shop_articles' %}" class="btn btn-dark my-3">Go Back</a>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% if request.user.is_authenticated %}
+                <p>Hello {{request.user}}</p>
+                {% endif %}
+                <div class="card">
+                    <div class="card-header">
+                        ALL SHOP
+                    </div>
+                    <ul class="list-group list-group-flush">
+<!--                        <li class="list-group-item">-->
+<!--                            <a href="{% url 'owner_shoes_list' %}">Shoes</a>-->
+<!--                        </li>-->
+<!--                        <li class="list-group-item">-->
+<!--                            <a href="{% url 'owner_collection_list' %}">Collections</a>-->
+<!--                        </li>-->
+                        {% for shop in shops %}
+                        <li class=" list-group-item">
+                            <a href="{% url 'owner_by_shop' %}?shop={{shop.name}}">
+                                {{shop.name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    <a href="{% url 'add_collections' %}" class="btn btn-dark btn-block btn-sm m-1">Add Collections</a>
+                    <a href="{% url 'add_shoes' %}" class="btn btn-info btn-block btn-sm m-1">Add Shoes</a>
+                    <a href="{% url 'logout' %}" class="btn btn-danger btn-block btn-sm m-1">Logout</a>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    {% for article in articles %}
+
+                    <div class="col-md-4">
+                        <div class="card my-2">
+                            <img class="image-thumbail" src="{{article.cover.url}}" alt="Card image cap">
+
+                            <div class="card-body">
+                                <h5 class="card-title"><strong>{{article.name}}</strong></h5>
+                                <a class="card-text"><strong>₽{{article.price}}</strong></a>
+                        </div>
+                        {% if article in shoes %}
+                        <a href="{% url 'detail' article.id %}" class="btn btn-outline-dark btn-sm m-1">Description</a>
+                        <a href="{% url 'detail' article.id %}" class="btn btn-outline-danger btn-sm m-1">Delete</a>
+                        <a href="{% url 'detail' article.id %}" class="btn btn-outline-info btn-sm m-1">Edit</a>
+                        {% else %}
+                        <a href="{% url 'detail_collection' article.id %}" class="btn btn-outline-dark btn-sm m-1">Description</a>
+                        <a href="{% url 'detail' article.id %}" class="btn btn-outline-danger btn-sm m-1">Delete</a>
+                        <a href="{% url 'detail' article.id %}" class="btn btn-outline-info btn-sm m-1">Edit</a>
+                        {%endif%}
+                    </div>
+                    </div>
+                    {% empty %}
+                    <h3>No photos...</h3>
+                    {% endfor %}
+
+                </div>
+            </div>
+    <!--Pagination-->
+      <div class="container p-4">
+        <div class="pagination justify-content-center">
+            <span class="step-links">
+              {% if articles.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ articles.previous_page_number }}">previous</a>
+              {% endif %}
+
+                <span class="current">
+                    Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+                </span>
+
+              {% if articles.has_next %}
+                  <a href="?page={{ articles.next_page_number }}">next</a>
+                  <a href="?page={{ articles.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+            </span>
+            </div>
+        </div>
+      <!--end of Pagination-->
+        </div>
+    </div>
+</body>
+
+</html>
