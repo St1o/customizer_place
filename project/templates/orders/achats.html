@@ -1,0 +1,113 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load bootstrap5 %}
+
+<table style="width: 100%">
+
+    <tbody>
+    <tr>
+        <td>
+            <figure style="width: 256px">
+                <a href="/"><img src="{%static 'shoes/images/logo3.png'%}" width="148px" height="148px"
+                                 style="padding-left: 48px; margin-top: -25px"></a>
+                <figcaption style="text-align: center; margin-top: -15px">
+                    <b><i>Маркетплейс кастомных вещей</i></b>
+                </figcaption>
+            </figure>
+        </td>
+        <td>
+        </td>
+        <td>
+            <table style="margin-top: -25px">
+                <tbody>
+                <tr>
+                    <td align="right">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        ИНН : 2364021018
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        г. Кропоткин, ул. Вокзальная, д.  78
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        тел.: +7-952-865-59-47
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        e-mail: info.customizer_place@mail.ru
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <td style="text-align: center;padding-left: 548px; margin-top: 0px">
+        <table class="table" style="text-align: center">
+            <thead>
+            <b>
+                <h2>Ваш заказ, <b><i>{{client}}</i></b>, готов к оплате</h2>
+            </b>
+            <br>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Название</th>
+                <th scope="col"></th>
+                <th scope="col">Цена</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for qs in qs %}
+            <tr>
+                <th scope="row">{{i}}</th>
+                <td>{{qs.articles_name}}</td>
+                <td>{{qs.articles_photo}}</td>
+                <td>{{qs.articles_price}}</td>
+                <td></td>
+
+                <td>
+                    <a href="{% url 'del' qs.id %}" class=" btn-danger">
+                        Удалить
+                    </a>
+                </td>
+
+            </tr>
+            {% endfor %}
+            <tr>
+                <th scope="row"></th>
+                <td colspan="1"><b><i>Итого</i></b></td>
+                <td></td>
+                <td>{{total}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </td>
+    <td>
+        <tr>
+
+        </tr>
+    </td>
+    <td style="padding-left: 648px;">
+        <tr>
+            <td style="text-align: center">
+                <b>Заказ создан</b> <br>
+                {{date}} <br>
+            </td>
+            <td>
+                <a href="{% url 'paiement' %}" class="btn btn-primary">
+                    Оплатить
+                </a>
+            </td>
+        </tr>
+    </td>
+    </tbody>
+</table>
+<br>

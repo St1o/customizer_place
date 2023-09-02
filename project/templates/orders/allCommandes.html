@@ -1,0 +1,96 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load bootstrap5 %}
+
+<table style="width: 100%">
+    <tbody>
+    <tr>
+        <td>
+            <figure style="width: 256px">
+                <a href="/"><img src="{%static 'shoes/images/logo3.png'%}" width="148px" height="148px"
+                                 style="padding-left: 48px; margin-top: -25px"></a>
+                <figcaption style="text-align: center; margin-top: -15px">
+                    <b><i>Customizer Place</i></b>
+                </figcaption>
+            </figure>
+        </td>
+        <td>
+        </td>
+        <td>
+            <table style="margin-top: -25px">
+                <tbody>
+                <tr>
+                    <td align="right">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        ИНН : 2364021018
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        г. Кропоткин, ул. Вокзальная, д.  78
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        тел.: +7-952-865-59-47
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        e-mail: info.customizer_place@mail.ru
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <td style="text-align: center;padding-left: 548px; margin-top: 0px">
+        <table class="table" style="text-align: center">
+            <thead>
+            <b>
+                <h2>Все ваши заказы</h2>
+            </b>
+            <br>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Название</th>
+                <th scope="col"></th>
+                <th scope="col">Цена</th>
+                <th scope="col"></th>
+                <th scope="col">Заказ №</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for qs in qs %}
+                <th scope="row">{{i}}</th>
+                <td>{{qs.products}}</td>
+                <td></td>
+                <td>{{qs.total}}</td>
+                <td></td>
+                <td><b><i>{{qs.id}}</i></b></td>
+                <td>
+                    <a href="{% url 'delcmd' qs.id %}" class=" btn-danger">
+                        Удалить
+                    </a>
+                </td>
+
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </td>
+    <td>
+        <tr>
+
+        </tr>
+    </td>
+    </tbody>
+</table>
+<br>

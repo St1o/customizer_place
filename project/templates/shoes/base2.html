@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap5 %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+<html lang="en">
+	<!--Head-->
+    {% include 'includes/header.html' %}
+	<!--End Head-->
+   <!-- body -->
+   <body class="main-layout">
+	<!-- header section start -->
+	<div class="header_sect">
+<!--Navbar-->
+    {% include 'includes/navbar.html' %}
+<!--End Navbar-->
+<!-- container section start -->
+
+    <!--contact section start-->
+    {% block content %}
+    {% endblock %}
+    <!--contact section end-->
+
+
+<!-- end container-->
+    <div class="footer">
+        <div class="copyright">2023 Все права защищены. <a href="{%static 'https://html.design'%}">Customizer Place</a></div>
+	<!-- section footer start -->
+    </div>
+      <!-- Javascript files-->
+      <script src="{%static 'shoes/js/jquery.min.js'%}"></script>
+      <script src="{%static 'shoes/js/popper.min.js'%}"></script>
+      <script src="{%static 'shoes/js/bootstrap.bundle.min.js'%}"></script>
+      <script src="{%static 'shoes/js/jquery-3.0.0.min.js'%}"></script>
+      <script src="{%static 'shoes/js/plugin.js'%}"></script>
+      <!-- sidebar -->
+      <script src="{%static 'shoes/js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+      <script src="{%static 'shoes/js/custom.js'%}"></script>
+      <!-- javascript -->
+      <script src="{%static 'shoes/js/owl.carousel.js'%}"></script>
+      <script src="{%static 'https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js'%}"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+
+
+$('#myCarousel').carousel({
+            interval: false
+        });
+
+        //scroll slides on swipe for touch enabled devices
+
+        $("#myCarousel").on("touchstart", function(event){
+
+            var yClick = event.originalEvent.touches[0].pageY;
+            $(this).one("touchmove", function(event){
+
+                var yMove = event.originalEvent.touches[0].pageY;
+                if( Math.floor(yClick - yMove) > 1 ){
+                    $(".carousel").carousel('next');
+                }
+                else if( Math.floor(yClick - yMove) < -1 ){
+                    $(".carousel").carousel('prev');
+                }
+            });
+            $(".carousel").on("touchend", function(){
+                $(this).off("touchmove");
+            });
+        });
+      </script>
+    </div>
+   </body>
+</html>

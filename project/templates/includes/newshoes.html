@@ -1,0 +1,92 @@
+{% load static %}
+<div class="carousel-inner">
+    <div class="carousel-item active">
+        <div class="row">
+            <div class="col-sm-2 padding_0">
+                <div class="page_no">1/4</div>
+            </div>
+            <div class="col-sm-5">
+                <div class="banner_taital">
+                    <h1 class="banner_text">Маркетплейс</h1>
+                    <h1 class="mens_text"><strong>Покупай и продавай</strong></h1>
+                    <p class="lorem_text">Customizer Place - множество кастомных товаров: одежда, обувь, сумки, головные уборы, аксессуары и другое</p>
+                    <button class="buy_bt"><a href="{% url 'achat' %}">Купить</a></button>
+                    <button class="more_bt">
+                        <a class="nav-item nav-link" href="{% url 'shoes' %}">
+                            Больше
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="shoes_img"><img src="{%static 'shoes/images/mag_custom.jpg'%}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <div class="row">
+            <div class="col-sm-2 padding_0">
+                <div class="page_no">2/4</div>
+            </div>
+            <div class="col-sm-5">
+                <div class="banner_taital">
+                    <h1 class="banner_text">Сообщество</h1>
+                    <h1 class="mens_text"><strong>Стань частью</strong></h1>
+                    <p class="lorem_text">Объединяйтесь с художниками со всего СНГ, коллаборируйте и развивайте свои навыки</p>
+                    <button class="buy_bt"><a href="{% url 'achat' %}">Группа ВК</a></button>
+                    <button class="more_bt">
+                        <a class="nav-item nav-link" href="{% url 'shoes' %}">
+                            Группа ТГ
+                        </a>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="shoes_img"><img src="{%static 'shoes/images/group_des_custom.jpg'%}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <div class="row">
+            <div class="col-sm-2 padding_0">
+                <div class="page_no">3/4</div>
+            </div>
+            <div class="col-sm-5">
+                <div class="banner_taital">
+                    <h1 class="banner_text">История</h1>
+                    <h1 class="mens_text">Взлёты и падения<strong></strong></h1>
+                    <p class="lorem_text">Читайте историю развития проекта: о том, как мы стали победителями всеросийского конкурса "Студенческий стартап" от Фонда Содействия Инновациям, а также прошли акселрационную программу в Сколково и Южном IT-парке</p>
+                    <button class="buy_bt"><a href="{% url 'achat' %}">Читать в ВК</a></button>
+                    <button class="more_bt">
+                        <a class="nav-item nav-link" href="{% url 'shoes' %}">
+                            Читать в ТГ
+                        </a>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="shoes_img"><img src="{% static 'shoes/images/logo_part.jpg' %}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <div class="row">
+            <div class="col-sm-2 padding_0">
+                <div class="page_no">4/4</div>
+            </div>
+            <div class="col-sm-5">
+                <div class="banner_taital">
+                    <h1 class="banner_text">Уникальность</h1>
+                    <h1 class="mens_text"><strong>Просто будь собой</strong></h1>
+                    <p class="lorem_text">Решайте сами, кто вы, что вы хотите выразить своей одеждой и образом жизни - Джанни Версаче</p>
+                    <button class="buy_bt"><a href="{% url 'achat' %}">Купить</a></button>
+                    <button class="more_bt">
+                        <a class="nav-item nav-link" href="{% url 'shoes' %}">
+                            Больше
+                        </a>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="shoes_img"><img src="{% static 'shoes/images/uniq_cust.jpg' %}"></div>
+            </div>
+        </div>
+    </div>
+</div>

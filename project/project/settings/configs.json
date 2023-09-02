@@ -1,0 +1,13 @@
+{
+  "PROTOCOL": "http",
+  "DOMAIN": "localhost",
+  "DEBUG": true,
+  "SECRET_KEY": "django-insecure-m6%dn+2mq0o0vcn=t-x&@ep$6e%r12stj*2puaw6m27_x5tbkw",
+  "DATABASE":{
+      "HOST": "localhost",
+      "PORT": "5432",
+      "NAME": "customb",
+      "USER": "postgres",
+      "PASSWORD": "123"
+  }
+}

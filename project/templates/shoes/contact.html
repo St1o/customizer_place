@@ -1,0 +1,93 @@
+{% extends 'shoes/base2.html' %}
+{% load static %}
+
+{%block content %}
+
+<div>
+    <div>
+        <div>
+            <div class="position-absolute text-center h1 text-white">
+                <p class="h1 text-white">Быстрорастущая e-commerce плафторма</p>
+            </div>
+            <div class="bg_img_">
+                <img src="{%static 'shoes/images/bg-1.jpg'%}" class="object-fit-cover" alt="...">
+            </div>
+        </div>
+    </div>
+    <div class="content_layout_padding">
+        <div class="container">
+            <div class="py-1">
+                <h1 class="h1">O Customizer Place</h1>
+                <div class="row justify-content-center">
+                    <div class="col-5">
+                        <div class="position-absolute">
+                            <p class="h1 text-white">Маркетплейс и IT-платформа</p>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img class="rounded" src="{%static 'shoes/images/mp_it.jpg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="position-absolute">
+                            <p class="h1 text-white">Развитие искусства</p>
+                        </div>
+                        <div>
+                            <a href="">
+                                <img class="rounded" src="{%static 'shoes/images/art4.jpg'%}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-5">
+                <h1 class="h1">Ценности</h1>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <h2>Поддержка</h2>
+                        <text>Мы помогаем начинающим и средним художникам, предоставляя платформу для роста. Мы укрепляем отношения между покупателями и местными производителями, что стимулирует развитие российской экономики и открывает новые возможности для предпринимателей.</text>
+                    </div>
+                    <div class="col-4">
+                        <h2>Инновации</h2>
+                        <text>Мы опережаем потребности и запросы наших клиентов и не покладая рук работаем над тем, чтобы превосходить их ожидания. Мы постоянно заглядываем в будущее и тестируем новые услуги ещё до того, как они станут популярны.</text>
+                    </div>
+                    <div class="col-4">
+                        <h2>Сообщество</h2>
+                        <text>Мы стремимся обеспечить удобство онлайн-торговли и её широкий ассортимент на всей территории России, чтобы все — даже жители самых удалённых регионов страны — могли разнообразить свою жизнь и получить доступ к современным сервисам.</text>
+                    </div>
+                </div>
+            </div>
+            <div class="py-1">
+                <div class="row">
+                    <div class="col-6">
+                        <img class="rounded" src="{%static 'shoes/images/values.jpg'%}" alt="">
+                    </div>
+                    <div class="col-6">
+                        <h1 class="h1 text-center">Наша миссия</h1>
+                        <p class="text-right">Мы стремимся использовать передовые технологии, логистику и инновации, чтобы всегда быть на шаг впереди потребностей наших клиентов. Предоставляя доступ к продукции как от международных художников, так и от небольших местных производителей, мы стараемся улучшать жизнь и создавать новые возможности для всех жителей России, независимо от их расположения — от самого удалённого уголка страны до её столицы.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="py-5">
+                <h1 class="h1">Достижения</h1>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <img src="" alt="">
+                        <text>Победитель конкурса "Студенческий стартап" от Фонда Содействия Инновациям</text>
+                    </div>
+                    <div class="col-4">
+                        <img src="" alt="">
+                        <text>Прохождение акселерации в Skolkovo</text>
+                    </div>
+                    <div class="col-4">
+                        <img src="" alt="">
+                        <text>Прохождение акселерации в Южный IT-парк</text>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

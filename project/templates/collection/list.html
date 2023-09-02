@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load bootstrap5 %}
+
+<html lang="en">
+
+<head>
+    <title>Коллекция</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<body class="main-layout">
+<div class="header_sect">
+    <!--Head-->
+    {% include 'includes/header.html' %}
+    <!--End Head-->
+    <!-- header section start -->
+    <!--Navbar-->
+    {% if request.user.is_authenticated %}
+    {% include 'includes/navbar_auth.html' %}
+    {% else %}
+    {% include 'includes/navbar.html' %}
+    {% endif %}
+    <!--End Navbar-->
+
+    <bod class="m-5">
+        <div class="container">
+            <div class="row">
+                {% for article in articles %}
+                <div class="col-md-4">
+                    <div class="card my-2">
+                        <img class="image-thumbail" src="{{article.cover.url}}" alt="Card image cap">
+
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>{{article.name}}</strong></h5>
+                            <a class="card-text"><strong>₽{{article.price}}</strong></a>
+                        </div>
+<!--                        <div class="right_part" style="float: right; margin:auto; ">-->
+<!--                            <a href="{% url 'backet' article.id %}" class="btn btn-primary">Add To Backet</a>-->
+<!--                        </div>-->
+                        <div class="right_part" style="float: right; margin:auto; ">
+                        <a href="{% url 'backet' article.id %}" class="btn btn-primary">Добавить в корзину</a>
+                        </div>
+                        <a href="{% url 'detail_collection' article.id %}" class="btn btn-outline-dark btn-sm m-1">Описание</a>
+                    </div>
+                </div>
+                {% empty %}
+                <h3>Нет фото...</h3>
+                {% endfor %}
+
+            </div>
+        </div>
+        <!--Pagination-->
+        <div class="container p-4">
+            <div class="pagination justify-content-center">
+            <span class="step-links">
+              {% if articles.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ articles.previous_page_number }}">previous</a>
+              {% endif %}
+
+                <span class="current">
+                    Страница {{ articles.number }} из {{ articles.paginator.num_pages }}
+                </span>
+
+              {% if articles.has_next %}
+                  <a href="?page={{ articles.next_page_number }}">next</a>
+                  <a href="?page={{ articles.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+            </span>
+            </div>
+        </div>
+        <!--end of Pagination-->
+    </bod>
+</div>
+<!-- Javascript files-->
+<script src="{%static 'shoes/js/jquery.min.js'%}"></script>
+<script src="{%static 'shoes/js/popper.min.js'%}"></script>
+<script src="{%static 'shoes/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{%static 'shoes/js/jquery-3.0.0.min.js'%}"></script>
+<script src="{%static 'shoes/js/plugin.js'%}"></script>
+<!-- sidebar -->
+<script src="{%static 'shoes/js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+<script src="{%static 'shoes/js/custom.js'%}"></script>
+<!-- javascript -->
+<script src="{%static 'shoes/js/owl.carousel.js'%}"></script>
+<script src="{%static 'https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js'%}"></script>
+<script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+
+
+$('#myCarousel').carousel({
+            interval: false
+        });
+
+        //scroll slides on swipe for touch enabled devices
+
+        $("#myCarousel").on("touchstart", function(event){
+
+            var yClick = event.originalEvent.touches[0].pageY;
+            $(this).one("touchmove", function(event){
+
+                var yMove = event.originalEvent.touches[0].pageY;
+                if( Math.floor(yClick - yMove) > 1 ){
+                    $(".carousel").carousel('next');
+                }
+                else if( Math.floor(yClick - yMove) < -1 ){
+                    $(".carousel").carousel('prev');
+                }
+            });
+            $(".carousel").on("touchend", function(){
+                $(this).off("touchmove");
+            });
+        });
+
+</script>
+</body>
+<div class="footer">    <!-- contact section end -->
+    <div class="copyright">2023 Все права защищены. <a href="{%static 'https://html.design'%}"> Customizer Place</a></div>
+    <!-- section footer start -->
+</div>
+</html>

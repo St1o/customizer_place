@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load bootstrap5 %}
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Карточка товара</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<body class="main-layout">
+<div class="header_sect">
+<!--Head-->
+    {% include 'includes/header.html' %}
+	<!--End Head-->
+	<!-- header section start -->
+    <!--Navbar-->
+		{% if request.user.is_authenticated %}
+    		{% include 'includes/navbar_auth.html' %}
+		{% else %}
+			{% include 'includes/navbar.html' %}
+		{% endif %}
+    <!--End Navbar-->
+<bod class="m-5">
+    <div><button onclick="history.back()">Назад</button></div>
+        <div class="container">
+            <div class="row justify-content-around" style="margin-right:0px ;height: 40vh;">
+                 <div class="col-4">
+            <!--Carousel Wrapper-->
+            <div id="carousel-example-1z" class="carousel slide" data-ride="carousel">
+                <!--Indicators-->
+                <ul class="carousel-indicators">
+                {% for p in all_img %}
+                  <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+                {% endfor %}
+                </ul>
+                <!--/.Indicators-->
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                  {% for p in all_img %}
+                  <div class="carousel-item  {% if forloop.counter0 == 0 %} active {% endif %}" >
+                    <img class="d-block w-100" style="max-width: 90%; max-height: 90%;" src="{{p.photo.url}}" alt="First slide">
+                  </div>
+                  {% endfor %}
+                  <!--/First slide-->
+                <!--/.Slides-->
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev" style=" color: rgb(91, 12, 82);font-size: large;">
+                  <span class="carousel-control-prev-icon"></span>
+                  <span class="sr-only" >Назад</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                  <span class="sr-only">Вперёд</span>
+                </a>
+                <!--/.Controls-->
+              </div>
+            </div>
+                  </div>
+            <div class="col-4">
+                    <div class="col">
+                        <div class="card-body">
+                                <h5 class="card-title text-center"><strong>{{article.name}}</strong></h5>
+                                <a class="card-text text-center bg-dark text-white"> {{article.description}} </a>
+                            </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+</bod>
+</div>
+      <!-- Javascript files-->
+      <script src="{%static 'shoes/js/jquery.min.js'%}"></script>
+      <script src="{%static 'shoes/js/popper.min.js'%}"></script>
+      <script src="{%static 'shoes/js/bootstrap.bundle.min.js'%}"></script>
+      <script src="{%static 'shoes/js/jquery-3.0.0.min.js'%}"></script>
+      <script src="{%static 'shoes/js/plugin.js'%}"></script>
+      <!-- sidebar -->
+      <script src="{%static 'shoes/js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+      <script src="{%static 'shoes/js/custom.js'%}"></script>
+      <!-- javascript -->
+      <script src="{%static 'shoes/js/owl.carousel.js'%}"></script>
+      <script src="{%static 'https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js'%}"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+
+
+$('#myCarousel').carousel({
+            interval: false
+        });
+
+        //scroll slides on swipe for touch enabled devices
+
+        $("#myCarousel").on("touchstart", function(event){
+
+            var yClick = event.originalEvent.touches[0].pageY;
+            $(this).one("touchmove", function(event){
+
+                var yMove = event.originalEvent.touches[0].pageY;
+                if( Math.floor(yClick - yMove) > 1 ){
+                    $(".carousel").carousel('next');
+                }
+                else if( Math.floor(yClick - yMove) < -1 ){
+                    $(".carousel").carousel('prev');
+                }
+            });
+            $(".carousel").on("touchend", function(){
+                $(this).off("touchmove");
+            });
+        });
+      </script>
+   </body>
+    <div class="footer">   	<!-- contact section end -->
+<div class="copyright">2023 Все права защищены. <a href="{%static 'https://html.design'%}">Customizer Place</a></div>
+	<!-- section footer start -->
+    </div>
+</html>
